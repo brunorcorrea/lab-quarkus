@@ -4,7 +4,9 @@ import api.dto.in.CreateCandidate;
 import api.dto.in.UpdateCandidate;
 import domain.CandidateService;
 import domain.Candidate;
+import infraestructure.resources.CandidateResource;
 import io.quarkus.test.InjectMock;
+import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.instancio.Instancio;
@@ -17,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @QuarkusTest
+@TestHTTPEndpoint(CandidateResource.class)
 class CandidateApiTest {
 
     @Inject
