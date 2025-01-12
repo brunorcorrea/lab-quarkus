@@ -49,8 +49,8 @@ public class SQLCandidateRepository implements CandidateRepository {
         return Stream.of(
                         query.ids().map(ids -> root.get("id").in(ids)),
                         query.name().map(name -> cb.or(
-                                    cb.like(cb.lower(root.get("familyName")), name.toLowerCase()),
-                                    cb.like(cb.lower(root.get("givenName")), name.toLowerCase())
+                                    cb.like(cb.lower(root.get("familyName")), "%" + name.toLowerCase() + "%"),
+                                    cb.like(cb.lower(root.get("givenName")), "%" + name.toLowerCase() + "%")
                             ))
                 )
                 .flatMap(Optional::stream)

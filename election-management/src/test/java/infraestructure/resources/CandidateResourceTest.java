@@ -5,6 +5,7 @@ import api.dto.in.CreateCandidate;
 import api.dto.in.UpdateCandidate;
 import api.dto.out.Candidate;
 import io.quarkus.test.InjectMock;
+import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 import org.instancio.Instancio;
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @QuarkusTest
+@TestHTTPEndpoint(CandidateResource.class)
 class CandidateResourceTest {
 
     @InjectMock
@@ -59,9 +61,11 @@ class CandidateResourceTest {
         UpdateCandidate in = Instancio.create(UpdateCandidate.class);
         domain.Candidate candidate = in.toDomain(id);
 
+        when(api.update(id, in)).thenReturn(Candidate.fromDomain(candidate));
+
         var response = given().contentType(MediaType.APPLICATION_JSON).body(in)
                 .when().put("/" + id)
-                .then().statusCode(RestResponse.StatusCode.OK).extract().as(Candidate.class);
+                .then().statusCode(RestResponse.StatusCode.OK).contentType(MediaType.APPLICATION_JSON).extract().as(Candidate.class);
 
         verify(api).update(id, in);
         verifyNoMoreInteractions(api);

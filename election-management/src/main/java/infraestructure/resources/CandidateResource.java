@@ -37,6 +37,7 @@ public class CandidateResource {
     }
 
     @PUT
+    @ResponseStatus(RestResponse.StatusCode.OK)
     @Path("/{id}")
     @Transactional
     public Candidate update(@PathParam("id") String id, UpdateCandidate dto) {
