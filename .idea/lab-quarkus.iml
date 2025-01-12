@@ -32,5 +32,6 @@
     <orderEntry type="library" name="Maven: jakarta.transaction:jakarta.transaction-api:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.18.2" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus.resteasy.reactive:resteasy-reactive-common:3.8.6" level="project" />
+    <orderEntry type="library" name="Maven: io.quarkus:quarkus-redis-client:3.17.6" level="project" />
   </component>
 </module>

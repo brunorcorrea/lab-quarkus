@@ -78,12 +78,6 @@
       <artifactId>quarkus-hibernate-orm</artifactId>
     </dependency>
     <dependency>
-      <groupId>jakarta.enterprise</groupId>
-      <artifactId>jakarta.enterprise.cdi-api</artifactId>
-      <version>3.0.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-jdbc</artifactId>
     </dependency>
