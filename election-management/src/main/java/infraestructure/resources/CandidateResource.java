@@ -2,6 +2,7 @@ package infraestructure.resources;
 
 import api.CandidateApi;
 import api.dto.in.CreateCandidate;
+import api.dto.in.UpdateCandidate;
 import api.dto.out.Candidate;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -33,5 +34,12 @@ public class CandidateResource {
     @ResponseStatus(RestResponse.StatusCode.OK)
     public List<Candidate> list() {
         return candidateApi.list();
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Transactional
+    public Candidate update(@PathParam("id") String id, UpdateCandidate dto) {
+        return candidateApi.update(id, dto);
     }
 }
