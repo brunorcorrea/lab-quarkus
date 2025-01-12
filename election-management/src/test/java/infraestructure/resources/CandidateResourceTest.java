@@ -2,6 +2,7 @@ package infraestructure.resources;
 
 import api.CandidateApi;
 import api.dto.in.CreateCandidate;
+import api.dto.out.Candidate;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
@@ -9,9 +10,12 @@ import org.instancio.Instancio;
 import org.jboss.resteasy.reactive.RestResponse;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @QuarkusTest
 class CandidateResourceTest {
@@ -29,5 +33,21 @@ class CandidateResourceTest {
 
         verify(api).create(in);
         verifyNoMoreInteractions(api);
+    }
+
+    @Test
+    void list() {
+        List<Candidate> out = Instancio.stream(Candidate.class).limit(4).toList();
+
+        when(api.list()).thenReturn(out);
+
+        var response = given()
+                .when().get()
+                .then().statusCode(RestResponse.StatusCode.OK).extract().as(Candidate[].class);
+
+        verify(api).list();
+        verifyNoMoreInteractions(api);
+
+        assertEquals(out, Arrays.stream(response).toList());
     }
 }
