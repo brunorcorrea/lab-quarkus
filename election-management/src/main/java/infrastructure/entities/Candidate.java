@@ -1,8 +1,9 @@
-package infraestructure.entities;
+package infrastructure.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Column;
+
 import java.util.Optional;
 
 @Entity(name = "candidates")

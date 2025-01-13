@@ -1,4 +1,4 @@
-package infraestructure.entities;
+package infrastructure.entities;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

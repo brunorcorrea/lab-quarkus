@@ -2,9 +2,9 @@ package api;
 
 import api.dto.in.CreateCandidate;
 import api.dto.in.UpdateCandidate;
-import domain.CandidateService;
 import domain.Candidate;
-import infraestructure.resources.CandidateResource;
+import domain.CandidateService;
+import infrastructure.resources.CandidateResource;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;

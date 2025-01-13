@@ -1,4 +1,4 @@
-package infraestructure.entities;
+package infrastructure.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

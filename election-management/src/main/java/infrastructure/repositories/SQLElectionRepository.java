@@ -1,8 +1,8 @@
-package infraestructure.repositories;
+package infrastructure.repositories;
 
 import domain.Election;
 import domain.ElectionRepository;
-import infraestructure.entities.ElectionCandidate;
+import infrastructure.entities.ElectionCandidate;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -19,7 +19,7 @@ public class SQLElectionRepository implements ElectionRepository {
     @Override
     @Transactional
     public void submit(Election election) {
-        infraestructure.entities.Election entity = infraestructure.entities.Election.fromDomain(election);
+        infrastructure.entities.Election entity = infrastructure.entities.Election.fromDomain(election);
 
         entityManager.merge(entity);
 

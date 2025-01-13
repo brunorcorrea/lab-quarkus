@@ -1,4 +1,4 @@
-package infraestructure.repositories;
+package infrastructure.repositories;
 
 import domain.Candidate;
 import domain.CandidateQuery;
@@ -27,25 +27,25 @@ public class SQLCandidateRepository implements CandidateRepository {
     @Transactional
     public void save(List<Candidate> candidates) {
         candidates.stream()
-                .map(infraestructure.entities.Candidate::fromDomain)
+                .map(infrastructure.entities.Candidate::fromDomain)
                 .forEach(entityManager::merge);
     }
 
     @Override
     public List<Candidate> find(CandidateQuery query) {
         var cb = entityManager.getCriteriaBuilder();
-        var cq = cb.createQuery(infraestructure.entities.Candidate.class);
-        var root = cq.from(infraestructure.entities.Candidate.class);
+        var cq = cb.createQuery(infrastructure.entities.Candidate.class);
+        var root = cq.from(infrastructure.entities.Candidate.class);
 
         cq.select(root).where(conditions(query, cb, root));
 
         return entityManager.createQuery(cq)
                 .getResultStream()
-                .map(infraestructure.entities.Candidate::toDomain)
+                .map(infrastructure.entities.Candidate::toDomain)
                 .toList();
     }
 
-    private Predicate[] conditions(CandidateQuery query, CriteriaBuilder cb, Root<infraestructure.entities.Candidate> root) {
+    private Predicate[] conditions(CandidateQuery query, CriteriaBuilder cb, Root<infrastructure.entities.Candidate> root) {
         return Stream.of(
                         query.ids().map(ids -> root.get("id").in(ids)),
                         query.name().map(name -> cb.or(

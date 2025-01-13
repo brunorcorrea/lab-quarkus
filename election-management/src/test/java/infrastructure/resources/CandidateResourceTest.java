@@ -1,4 +1,4 @@
-package infraestructure.resources;
+package infrastructure.resources;
 
 import api.CandidateApi;
 import api.dto.in.CreateCandidate;
