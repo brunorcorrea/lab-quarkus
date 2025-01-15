@@ -3,6 +3,7 @@ package infrastructure.repositories;
 import domain.Candidate;
 import domain.Election;
 import domain.ElectionRepository;
+import domain.annotations.Principal;
 import infrastructure.entities.ElectionCandidate;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
+@Principal
 @ApplicationScoped
 public class SQLElectionRepository implements ElectionRepository {
 
@@ -38,6 +40,7 @@ public class SQLElectionRepository implements ElectionRepository {
                 .forEach(entityManager::merge);
     }
 
+    @Override
     public List<Election> findAll() {
         Stream<Object[]> stream = entityManager.createNativeQuery(
                         """

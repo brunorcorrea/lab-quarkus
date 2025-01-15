@@ -34,5 +34,9 @@
     <orderEntry type="library" name="Maven: io.quarkus.resteasy.reactive:resteasy-reactive-common:3.8.6" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-redis-client:3.17.6" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-scheduler-api:3.17.6" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.inject:jakarta.inject-api:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: io.quarkus.resteasy.reactive:resteasy-reactive-common:3.17.6" level="project" />
+    <orderEntry type="library" name="Maven: io.quarkus:quarkus-core:3.17.6" level="project" />
   </component>
 </module>
